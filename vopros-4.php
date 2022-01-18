@@ -1,4 +1,4 @@
-<form>
+        <form>
            <p> <b>Предпочитаемый период отпуска</b> </p>
                 <div class="form-group">
                     <label>

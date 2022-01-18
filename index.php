@@ -2,6 +2,13 @@
 <html lang="ru">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="style.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://rawgit.com/kartik-v/bootstrap-star-rating/v3.5.4/css/star-rating.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script src="https://rawgit.com/kartik-v/bootstrap-star-rating/v3.5.4/js/star-rating.js"></script>
+<script src="jqUI.js"></script>
+<script src="app.js"></script>
 <head>
 <title>Опрос</title>
 </head>
@@ -14,66 +21,52 @@
             <div class="col"></div>
                 <div class="col-6 border border-success mt-3 pt-3 pb-3">
                     <main id="quest" role="main" class="inner cover">
-                        <?php 
-                            $i = 0;
-                            $j = 0;
-                            $quest_file = file_get_contents('questions.json');
-                            $quest_arr = json_decode($quest_file, true);
-                            if( $quest_file != false && !is_null($quest_arr)){
-                            foreach ($quest_arr as $val) {
-                                $title = $val;
-                                $i++;
-                            }
-                        } 
-                       echo 'Полученно'.$_POST['int'];
-                        $count = count($quest_arr);          
-                        if ($j < $count && $j == 0) {
-                        ?>
-                        <div id="quest-0">
+                        <div id="quest-0" style="display: block">
                             <?php 
                                 include('vopros-0.php');
                              ?>
                         </div>
-                        <?php 
-                        }
-                        ?>
-                        <?php 
-                        if ($j < $count && $j == 1) {
-                        ?>
-                        <div id="quest-1" style="">
+                        <div id="quest-1" style="display: none">
                             <?php 
                                 include('vopros-1.php');
                             ?>
                         </div>
-                        <?php
-                        }
-                        ?>
-                        <?php  
-                        if ($j < $count && $j == 2) {
-                        ?>
-                        <div id="quest-2" class="quest_2" style="">
+
+                        <div id="quest-2" class="quest_2" style="display: none">
                             <?php 
                                 include('vopros-3.php');
                             ?>
                         </div>
-                        <?php 
-                        }
-                        ?>
-                        <?php 
-                        if ($j < $count && $j == 3) {
-                            ?>
-                        <div id="quest-3" class="quest_3" style="">
+                        <div id="quest-3" class="quest_3" style="display: none">
                             <?php 
                                 include('vopros-4.php');
                             ?>
                         </div>
-                        <?php 
-                        }
-                        ?>
+                        <div id="quest-4" class="quest_4" style="display: none">
+                            <?php
+                            include('vopros-5.php');
+                            ?>
+                        </div>
+                        <div id="quest-5" class="quest_5" style="display: none">
+                            <?php
+                            include('vopros-6.php');
+                            ?>
+                        </div>
+                        <div id="quest-6" class="quest_6" style="display: none">
+                            <?php
+                            include('vopros-7.php');
+                            ?>
+                        </div>
+                        <div id="quest-7" class="quest_7" style="display: none">
+                            <?php
+                            include('vopros-8.php');
+                            ?>
+                        </div>
+                        <button id="prev" style="display: none" type="submit" class="btn btn-danger">Назад</button>
                         <button id="next" type="submit" class="btn btn-success">Продолжить</button>
                     </main>     
                 </div>
-        <div class="col"> 
+        <div class="col">
         </div>
             </div>
       <footer class="mastfoot mt-auto">
@@ -86,29 +79,74 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../../../dist/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-    $(document).ready(function(){
-        let i = 0;
-            $('#next').click(function(){
-                $.ajax({
-                    url: '/index.php',
-                    method: 'post',
-                    dataType: 'html',
-                    data: {text: i++},
-                    success: function(data){
-                        if(i == 1){
-                            
-                        }
+        <script>
+            $(document).ready(function () {
+                let counter = 0;
+                $('#next').on('click', function () {
+                    counter++;
+                    if (counter === 1) {
+                        $('#quest-0').hide();
+                        $('#quest-1').show();
+                        $('#prev').show();
                     }
-                    });
+                    else if (counter === 2){
+                        $('#quest-1').hide();
+                        $('#quest-2').show();
+                    }
+                    else if (counter === 3){
+                        $('#quest-2').hide();
+                        $('#quest-3').show();
+                    }
+                    else if (counter === 4){
+                        $('#quest-3').hide();
+                        $('#quest-4').show();
+                    }
+                    else if (counter === 5){
+                        $('#quest-4').hide();
+                        $('#quest-5').show();
+                    }
+                    else if (counter === 6){
+                        $('#quest-5').hide();
+                        $('#quest-6').show();
+                    }
+                    else if (counter === 7){
+                        $('#quest-6').hide();
+                        $('#quest-7').show();
+                    }
+                });
+                $ ("#prev").on('click', function (){
+                    counter--;
+                    if (counter === 0){
+                        $('#quest-0').show();
+                        $('#quest-1').hide();
+                        $('#prev').hide();
+                    }
+                    else if (counter === 1) {
+                        $('#quest-1').show();
+                        $('#quest-2').hide();
+                    }
+                    else if (counter === 2) {
+                        $('#quest-2').show();
+                        $('#quest-3').hide();
+                    }
+                    else if (counter === 3) {
+                        $('#quest-3').show();
+                        $('#quest-4').hide();
+                    }
+                    else if (counter === 4) {
+                        $('#quest-4').show();
+                        $('#quest-5').hide();
+                    }
+                    else if (counter === 5) {
+                        $('#quest-5').show();
+                        $('#quest-6').hide();
+                    }
+                    else if (counter === 6) {
+                        $('#quest-6').show();
+                        $('#quest-7').hide();
+                    }
+                })
             });
-});
-
-    </script>
+        </script>
 
 

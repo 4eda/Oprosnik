@@ -1,5 +1,5 @@
 <form id="send" id="quest-0" class="" type="post">
-    <p><b><?php echo $quest_arr['quest'][$j]['title']; ?></b></p>
+    <p><b>Заполните форму о себе</b></p>
                 <div class="form-group">
                     <label for="surname">Фамилия</label>
                     <input type="text" class="form-control" id="surname" placeholder="Введите фамилию">
