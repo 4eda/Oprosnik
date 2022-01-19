@@ -240,3 +240,10 @@
 .star-rating-rtl .caption {
     padding-right: 5px;
 }
+
+ .ui-progressbar-value {
+                          background-image: url(http://www.professorweb.ru/downloads/jquery/progress-animation.gif);
+                      }
+.ui-progressbar {
+    height: 22px
+}

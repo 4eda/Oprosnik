@@ -62,8 +62,8 @@
                             include('vopros-8.php');
                             ?>
                         </div>
-                        <button id="prev" style="display: none" type="submit" class="btn btn-danger">Назад</button>
-                        <button id="next" type="submit" class="btn btn-success">Продолжить</button>
+                        <button id="prev" style="display: none" class="btn btn-danger">Назад</button>
+                        <button id="next"  class="btn btn-success">Продолжить</button>
                     </main>     
                 </div>
         <div class="col">
@@ -81,15 +81,43 @@
     <!-- Placed at the end of the document so the pages load faster -->
         <script>
             $(document).ready(function () {
+                let main_array = [];
+                var value_sur = '';
+                var value_name = '';
+                var value_pat = '';
+                var value_em = '';
+                var value_pho = '';
+                var value_type = '';
+                $("#surname").keyup(function () {
+                    value_sur = $(this).val();
+                }).keyup();
+                $("#name").keyup(function () {
+                    value_name = $(this).val();
+                }).keyup();
+                $("#patronymic").keyup(function () {
+                    value_pat = $(this).val();
+                }).keyup();
+                $("#email").keyup(function () {
+                    value_em = $(this).val();
+                }).keyup();
+                $("#phone").keyup(function () {
+                    value_pho = $(this).val();
+                }).keyup();
                 let counter = 0;
                 $('#next').on('click', function () {
                     counter++;
                     if (counter === 1) {
+                        main_array.push(value_sur);
+                        main_array.push(value_name);
+                        main_array.push(value_pat);
+                        main_array.push(value_em);
+                        main_array.push(value_pho);
                         $('#quest-0').hide();
                         $('#quest-1').show();
                         $('#prev').show();
                     }
                     else if (counter === 2){
+                        main_array.push(value_type);
                         $('#quest-1').hide();
                         $('#quest-2').show();
                     }
@@ -146,7 +174,10 @@
                         $('#quest-7').hide();
                     }
                 })
+
+                console.log(main_array);
             });
+
         </script>
 
 
