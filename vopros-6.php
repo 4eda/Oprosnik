@@ -1,8 +1,8 @@
-<form>
+<div>
     <p> <b>Знак зодиака</b> </p>
     <div class="form-group">
         <label>
-        <select style="height: 45px" class="form-control" name="zodik" id="zod">
+        <select name="quest_6" style="height: 45px" class="form-control" name="zodik" id="zod">
             <option val="1">Овен</option>
             <option val="2">Телец</option>
             <option val="3">Близнецы</option>
@@ -18,4 +18,4 @@
         </select>
         </label>
     </div>
-</form>
+</div>

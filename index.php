@@ -20,6 +20,7 @@
       <div class="row">
             <div class="col"></div>
                 <div class="col-6 border border-success mt-3 pt-3 pb-3">
+                    <form action="send.php" method="POST">
                     <main id="quest" role="main" class="inner cover">
                         <div id="quest-0" style="display: block">
                             <?php 
@@ -62,9 +63,11 @@
                             include('vopros-8.php');
                             ?>
                         </div>
-                        <button id="prev" style="display: none" class="btn btn-danger">Назад</button>
-                        <button id="next"  class="btn btn-success">Продолжить</button>
-                    </main>     
+                    </main>
+                        <input style="display: none" type="submit" id="end_quest"  value="Завершить опрос" class="btn btn-primary mb-3">
+                    </form>
+                    <button id="prev" style="display: none" class="btn btn-danger">Назад</button>
+                    <button id="next"  class="btn btn-success">Продолжить</button>
                 </div>
         <div class="col">
         </div>
@@ -140,6 +143,8 @@
                     else if (counter === 7){
                         $('#quest-6').hide();
                         $('#quest-7').show();
+                        $('#next').hide();
+                        $('#end_quest').show();
                     }
                 });
                 $ ("#prev").on('click', function (){
@@ -172,6 +177,8 @@
                     else if (counter === 6) {
                         $('#quest-6').show();
                         $('#quest-7').hide();
+                        $('#next').show();
+                        $('#end_quest').hide();
                     }
                 })
 

@@ -1,17 +1,17 @@
-<form class="mb-5">
+<div class="mb-5">
     <p><b>Ожидаемый уровень зарплаты</b> </p>
     <div class="polzunok-container-5">
-        <input type="text" class="polzunok-input-5-left" />
-        <input type="text" class="polzunok-input-5-right "/>
+        <input name="price_start" type="text" class="polzunok-input-5-left" />
+        <input name="price_end" type="text" class="polzunok-input-5-right "/>
         <div class="polzunok-5"></div>
     </div>
-</form>
+</div>
 
 <script>
     $(".polzunok-5").slider({
-        min: 0,
-        max: 5000,
-        values: [2000, 3000],
+        min: 30000,
+        max: 250000,
+        values: [100000, 200000],
         range: true,
         animate: "fast",
         slide : function(event, ui) {

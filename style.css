@@ -247,3 +247,8 @@
 .ui-progressbar {
     height: 22px
 }
+
+.hr {
+    color: white;
+    text-decoration: none;
+}
